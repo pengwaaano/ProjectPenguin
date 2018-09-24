@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="AnimationEvents.cs" t="Include" />
+        <e p="classes" t="Include">
+          <e p="CurrencyDenominations.cs" t="Include" />
+          <e p="Fish.cs" t="Include" />
+          <e p="Location.cs" t="Include" />
+          <e p="Upgrade.cs" t="Include" />
+        </e>
+        <e p="Constants" t="Include">
+          <e p="GameConstants.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="CurrencyController.cs" t="Include" />
+          <e p="GameController.cs" t="Include" />
+          <e p="LocationController.cs" t="Include" />
+          <e p="UIController.cs" t="Include" />
+          <e p="UpgradeController.cs" t="Include" />
+        </e>
+        <e p="Database" t="Include">
+          <e p="LocationDatabase.cs" t="Include" />
+        </e>
+        <e p="Editor" t="Include">
+          <e p="EditorUtils.cs" t="Include" />
+        </e>
+        <e p="LocationListItem.cs" t="Include" />
+        <e p="Plugins" t="Include">
+          <e p="Editor" t="Include">
+            <e p="JetBrains" t="Include">
+              <e p="Unity3DRider.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PopulateList.cs" t="Include" />
+        <e p="RecyclerView" t="Include">
+          <e p="RecyclerView.cs" t="Include" />
+        </e>
+        <e p="ReorderableList" t="Include">
+          <e p="Example" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ExampleEditor.cs" t="Include" />
+              <e p="GameObjectEditor.cs" t="Include" />
+              <e p="NameOverrideEditor.cs" t="Include" />
+              <e p="NestedChildDrawer.cs" t="Include" />
+            </e>
+            <e p="Example.cs" t="Include" />
+            <e p="GameObjectExample.cs" t="Include" />
+            <e p="NameOverride.cs" t="Include" />
+            <e p="NestedExample.cs" t="Include" />
+          </e>
+          <e p="List" t="Include">
+            <e p="Attributes" t="Include">
+              <e p="ReorderableAttribute.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="ReorderableDrawer.cs" t="Include" />
+              <e p="ReorderableList.cs" t="Include" />
+            </e>
+            <e p="ReorderableArray.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Util.cs" t="Include" />
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Project Penguin.sln" t="IncludeFlat" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_Project Penguin.-1120809760.00" t="ExcludeRecursive" />
+  </component>
+</project>
