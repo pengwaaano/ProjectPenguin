@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum ListItemEnums
 {
-    LocationListItem
+    LocationListItem, PenguinListItem
 }
 
 public enum UpgradableAttributes

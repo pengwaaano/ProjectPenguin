@@ -11,6 +11,7 @@
           <e p="CurrencyDenominations.cs" t="Include" />
           <e p="Fish.cs" t="Include" />
           <e p="Location.cs" t="Include" />
+          <e p="Penguin.cs" t="Include" />
           <e p="Upgrade.cs" t="Include" />
         </e>
         <e p="Constants" t="Include">
@@ -20,6 +21,7 @@
           <e p="CurrencyController.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="LocationController.cs" t="Include" />
+          <e p="PenguinController.cs" t="Include" />
           <e p="UIController.cs" t="Include" />
           <e p="UpgradeController.cs" t="Include" />
         </e>
@@ -29,7 +31,10 @@
         <e p="Editor" t="Include">
           <e p="EditorUtils.cs" t="Include" />
         </e>
-        <e p="LocationListItem.cs" t="Include" />
+        <e p="ListItems" t="Include">
+          <e p="LocationListItem.cs" t="Include" />
+          <e p="PenguinListItem.cs" t="Include" />
+        </e>
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="JetBrains" t="Include">

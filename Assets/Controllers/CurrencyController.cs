@@ -19,6 +19,16 @@ namespace Controllers
             fish += _fish;
         }
 
+        public void spendFish(float _fish)
+        {
+            fish -= _fish;
+        }
+
+        public bool canAfford(float _cost)
+        {
+            return fish >= _cost;
+        }
+
         public string getFishString(bool scientific)
         {
             return scientific ? Util.CurrencyToStringScientific(fish) : Util.CurrencyToString(fish);

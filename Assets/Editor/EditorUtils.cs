@@ -74,4 +74,39 @@ public class EditorUtils : MonoBehaviour
             serializedObject.ApplyModifiedProperties();
         }
     }
+    
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(PenguinController))]
+    public class PenguinTemplateInspector : Editor
+    {
+        private ReorderableList penguinTemplates;
+
+        void OnEnable()
+        {
+            setReorderableList(ref penguinTemplates, "penguins", "name");
+        }
+
+        private void setReorderableList(ref ReorderableList list, string propertyName, string elementNameTitle)
+        {
+            SerializedProperty prop = serializedObject.FindProperty(propertyName);
+            if (prop == null)
+                return;
+            list = new ReorderableList(prop);
+            list.elementNameProperty = elementNameTitle;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            displayReorderableList(ref penguinTemplates);
+        }
+
+        private void displayReorderableList(ref ReorderableList list)
+        {
+            if (list == null)
+                return;
+            serializedObject.Update();
+            list.DoLayoutList();
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
 }

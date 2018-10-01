@@ -19,6 +19,14 @@ public class PopulateList : MonoBehaviour
                 instantiateLocationItem(location);
             }
         }
+        else if (listItemType == ListItemEnums.PenguinListItem)
+        {
+            List<Penguin> listData = Camera.main.gameObject.GetComponent<PenguinController>().penguins;
+            foreach (var penguin in listData)
+            {
+                instantiatePenguinItem(penguin);
+            }
+        }
     }
 
     private void instantiateLocationItem(Location location)
@@ -26,5 +34,12 @@ public class PopulateList : MonoBehaviour
         GameObject newItem = Instantiate(listItem);
         newItem.transform.SetParent(scrollContent);
         newItem.GetComponent<LocationListItem>().populateViews(location);
+    }
+    
+    private void instantiatePenguinItem(Penguin penguin)
+    {
+        GameObject newItem = Instantiate(listItem);
+        newItem.transform.SetParent(scrollContent);
+        newItem.GetComponent<PenguinListItem>().populateViews(penguin);
     }
 }
