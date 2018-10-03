@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class PenguinListItem : MonoBehaviour
 {
+    private Penguin penguin;
+    
     public Button penguinImage;
     public Text penguinName;
     public Text penguinDescription;
@@ -18,18 +20,25 @@ public class PenguinListItem : MonoBehaviour
 
     public bool progressComplete;
 
+    private bool populationComplete;
+
     private CurrencyController cController;
 
-    public void populateViews(Penguin penguin)
+    private void Update()
     {
+        if (populationComplete)
+        {
+            updateViews();
+        }
+    }
+
+    public void populateViews(Penguin p)
+    {
+
+        penguin = p;
         cController = Camera.main.gameObject.GetComponent<CurrencyController>();
 
-        penguinName.text = penguin.name;
-        if (penguin.isOwned())
-            penguinLevel.text = "Level " + penguin.getLevel();
-        else
-            penguinLevel.text = "";
-        penguinLevelUpText.text = penguin.getUserFriendlyCost() + "F";
+        updateViews();
 
         penguinImage.onClick.AddListener(() =>
         {
@@ -52,6 +61,19 @@ public class PenguinListItem : MonoBehaviour
                 penguin.incrementLevel();
             }
         });
+
+        populationComplete = true;
+    }
+
+    public void updateViews()
+    {
+        if (penguin.isOwned())
+            penguinLevel.text = "Level " + penguin.getLevel();
+        else
+            penguinLevel.text = "";
+        penguinLevelUpText.text = penguin.getUserFriendlyCost() + "F";
+        
+        Debug.Log("Level: " + penguin.getLevel());
     }
 
     private void finishProcess()

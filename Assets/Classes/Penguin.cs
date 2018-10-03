@@ -28,7 +28,7 @@ namespace Classes
 
         public float getUserFriendlyCost()
         {
-            return Mathf.RoundToInt(getCost());
+            return getCost();
         }
         
         public float getCost()
