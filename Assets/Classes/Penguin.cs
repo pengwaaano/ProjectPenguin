@@ -15,6 +15,7 @@ namespace Classes
         private float baseCost;
         private float cost;
         private int level;
+        public bool hasManager;
 
         public float getBaseCost()
         {
@@ -41,6 +42,11 @@ namespace Classes
             return (baseProduction * level) * multiplier;
         }
 
+        public float getTimeToComplete()
+        {
+            return baseTime;
+        }
+
         public bool isOwned()
         {
             return level > 0;
@@ -59,6 +65,16 @@ namespace Classes
         public void incrementLevel()
         {
             level++;
+        }
+
+        public void setHasManager(bool b)
+        {
+            this.hasManager = b;
+        }
+        
+        public bool isManaged()
+        {
+            return hasManager;
         }
     }
 }

@@ -35,6 +35,7 @@
           <e p="LocationListItem.cs" t="Include" />
           <e p="PenguinListItem.cs" t="Include" />
         </e>
+        <e p="PenguinProgressSlider.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="JetBrains" t="Include">

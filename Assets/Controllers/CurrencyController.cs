@@ -7,7 +7,7 @@ namespace Controllers
     {
         public List<CurrencyDenominations> denominations = new List<CurrencyDenominations>();
 
-        private float fish = 0;
+        private float fish = 100;
 
         private void Start()
         {

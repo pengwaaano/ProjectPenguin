@@ -19,9 +19,9 @@ public class PenguinListItem : MonoBehaviour
     public Text penguinLevelUpText;
 
     public bool progressComplete;
-
     private bool populationComplete;
-
+    private PenguinProgressSlider sliderComponent;
+    
     private CurrencyController cController;
 
     private void Update()
@@ -37,18 +37,19 @@ public class PenguinListItem : MonoBehaviour
 
         penguin = p;
         cController = Camera.main.gameObject.GetComponent<CurrencyController>();
-
+        sliderComponent = penguinProgress.GetComponent<PenguinProgressSlider>();
         updateViews();
 
         penguinImage.onClick.AddListener(() =>
         {
             if (!progressComplete)
             {
-                Invoke("finishProcess", penguin.baseTime);
+                startProcess();
             }
             else
             {
                 collectIncome(penguin);
+                sliderComponent.finishTimer();
             }
         });
 
@@ -56,13 +57,18 @@ public class PenguinListItem : MonoBehaviour
         {
             if (cController.canAfford(penguin.getCost()))
             {
-                Debug.Log("Level Up!");
                 cController.spendFish(penguin.getCost());
                 penguin.incrementLevel();
             }
         });
 
         populationComplete = true;
+    }
+
+    public void startProcess()
+    {
+        Invoke("finishProcess", penguin.getTimeToComplete());
+        sliderComponent.startTimer(penguin);
     }
 
     public void updateViews()
@@ -72,22 +78,24 @@ public class PenguinListItem : MonoBehaviour
         else
             penguinLevel.text = "";
         penguinLevelUpText.text = penguin.getUserFriendlyCost() + "F";
-        
-        Debug.Log("Level: " + penguin.getLevel());
     }
 
     private void finishProcess()
     {
-        Debug.Log("Complete");
         penguinProgress.value = 1;
         progressComplete = true;
+        if (penguin.isManaged())
+        {
+            collectIncome(penguin);
+            sliderComponent.finishTimer();
+            startProcess();
+        }
     }
 
     private void collectIncome(Penguin penguin)
     {
         cController.addFish(penguin.getProduction(1));
         penguin.getProduction(1);
-        Debug.Log("Income Collected");
         penguinProgress.value = 0;
         progressComplete = false;
     }
