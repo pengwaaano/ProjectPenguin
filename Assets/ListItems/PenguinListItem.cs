@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PenguinListItem : MonoBehaviour
 {
     private Penguin penguin;
-    
+
     public Button penguinImage;
     public Text penguinName;
     public Text penguinDescription;
@@ -21,8 +21,11 @@ public class PenguinListItem : MonoBehaviour
     public bool progressComplete;
     private bool populationComplete;
     private PenguinProgressSlider sliderComponent;
-    
+
     private CurrencyController cController;
+    private FactoryController fController;
+
+    private bool isBeingManaged;
 
     private void Update()
     {
@@ -34,22 +37,25 @@ public class PenguinListItem : MonoBehaviour
 
     public void populateViews(Penguin p)
     {
-
         penguin = p;
         cController = Camera.main.gameObject.GetComponent<CurrencyController>();
+        fController = Camera.main.gameObject.GetComponent<FactoryController>();
         sliderComponent = penguinProgress.GetComponent<PenguinProgressSlider>();
         updateViews();
 
         penguinImage.onClick.AddListener(() =>
         {
-            if (!progressComplete)
+            if (!isBeingManaged)
             {
-                startProcess();
-            }
-            else
-            {
-                collectIncome(penguin);
-                sliderComponent.finishTimer();
+                if (!progressComplete)
+                {
+                    startProcess();
+                }
+                else
+                {
+                    collectIncome();
+                    sliderComponent.finishTimer();
+                }
             }
         });
 
@@ -77,7 +83,7 @@ public class PenguinListItem : MonoBehaviour
             penguinLevel.text = "Level " + penguin.getLevel();
         else
             penguinLevel.text = "";
-        penguinLevelUpText.text = penguin.getUserFriendlyCost() + "F";
+        penguinLevelUpText.text = Util.CurrencyToString(penguin.getCost());
     }
 
     private void finishProcess()
@@ -86,33 +92,18 @@ public class PenguinListItem : MonoBehaviour
         progressComplete = true;
         if (penguin.isManaged())
         {
-            collectIncome(penguin);
+            isBeingManaged = true;
+            collectIncome();
             sliderComponent.finishTimer();
             startProcess();
         }
     }
 
-    private void collectIncome(Penguin penguin)
+    private void collectIncome()
     {
-        cController.addFish(penguin.getProduction(1));
+        fController.addFish(penguin.getProduction(1));
         penguin.getProduction(1);
         penguinProgress.value = 0;
         progressComplete = false;
-    }
-
-    IEnumerator animateSliderOverTime(float seconds)
-    {
-        float animationTime = 0f;
-        while (true)
-        {
-            if (animationTime <= seconds)
-            {
-                animationTime += Time.deltaTime;
-                float lerpValue = animationTime / seconds;
-                penguinProgress.value = Mathf.Lerp(0, 1, lerpValue);
-                Util.Log("Penguin", "" + animationTime);
-                yield return null;
-            }
-        }
     }
 }

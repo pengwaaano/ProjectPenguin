@@ -27,9 +27,9 @@ namespace Classes
             baseCost = f;
         }
 
-        public float getUserFriendlyCost()
+        public string getUserFriendlyCost()
         {
-            return getCost();
+            return getCost().ToString("0.##");
         }
         
         public float getCost()

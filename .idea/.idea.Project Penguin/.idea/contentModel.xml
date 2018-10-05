@@ -19,6 +19,7 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="CurrencyController.cs" t="Include" />
+          <e p="FactoryController.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="LocationController.cs" t="Include" />
           <e p="PenguinController.cs" t="Include" />
