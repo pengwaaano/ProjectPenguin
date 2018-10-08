@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class FactoryController : MonoBehaviour
 {
     public Text factoryCount;
+    public Text factoryUpgradeText;
 
     public float outputPerSecond;
     public float timeToProcess;
@@ -27,6 +28,7 @@ public class FactoryController : MonoBehaviour
     void Update()
     {
         factoryCount.text = Util.CurrencyToString(fish);
+        factoryUpgradeText.text = "Upgrade (" + Util.CurrencyToString(getCost()) + ")";
     }
 
     public void addFish(float _fish)
@@ -36,12 +38,12 @@ public class FactoryController : MonoBehaviour
 
     public float getCost()
     {
-        return baseCost * Mathf.Pow(coefficient, level);
+        return FormulaManager.costFormula(baseCost, coefficient, level);
     }
 
     private float getOutputPerSecond(float multiplier)
     {
-        return (outputPerSecond * level) * multiplier;
+        return FormulaManager.productionFormula(outputPerSecond,level, multiplier);
     }
 
     private void processFish()

@@ -34,12 +34,12 @@ namespace Classes
         
         public float getCost()
         {
-            return baseCost * Mathf.Pow(coefficient, level);
+            return FormulaManager.costFormula(baseCost, coefficient, level);
         }
 
         public float getProduction(float multiplier)
         {
-            return (baseProduction * level) * multiplier;
+            return FormulaManager.productionFormula(baseProduction, level, multiplier);
         }
 
         public float getTimeToComplete()

@@ -32,6 +32,7 @@
         <e p="Editor" t="Include">
           <e p="EditorUtils.cs" t="Include" />
         </e>
+        <e p="FormulaManager.cs" t="Include" />
         <e p="ListItems" t="Include">
           <e p="LocationListItem.cs" t="Include" />
           <e p="PenguinListItem.cs" t="Include" />
