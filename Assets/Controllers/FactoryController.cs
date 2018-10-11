@@ -38,7 +38,7 @@ public class FactoryController : MonoBehaviour
 
     public float getCost()
     {
-        return FormulaManager.costFormula(baseCost, coefficient, level);
+        return FormulaManager.costFormula(baseCost, level, coefficient);
     }
 
     private float getOutputPerSecond(float multiplier)

@@ -6,7 +6,7 @@ public class FormulaManager : MonoBehaviour
 {
     public static float costFormula(float baseCost, float level, float coefficient)
     {
-        return baseCost * Mathf.Pow(coefficient, level);
+        return baseCost * Mathf.Pow(coefficient, (level + 1));
     }
 
     public static float productionFormula(float baseProduction, float level, float multiplier)

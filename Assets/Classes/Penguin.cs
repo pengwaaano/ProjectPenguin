@@ -31,10 +31,10 @@ namespace Classes
         {
             return getCost().ToString("0.##");
         }
-        
+
         public float getCost()
         {
-            return FormulaManager.costFormula(baseCost, coefficient, level);
+            return FormulaManager.costFormula(baseCost, level, coefficient);
         }
 
         public float getProduction(float multiplier)
@@ -51,7 +51,7 @@ namespace Classes
         {
             return level > 0;
         }
-    
+
         public float getLevel()
         {
             return level;
@@ -61,7 +61,7 @@ namespace Classes
         {
             level = i;
         }
-    
+
         public void incrementLevel()
         {
             level++;
@@ -71,7 +71,7 @@ namespace Classes
         {
             this.hasManager = b;
         }
-        
+
         public bool isManaged()
         {
             return hasManager;
