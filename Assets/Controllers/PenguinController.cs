@@ -22,4 +22,14 @@ public class PenguinController : MonoBehaviour {
 	{
 		return 3.738f + Mathf.Pow(index, 10) * 60;
 	}
+
+	public float getIncomePerSecond()
+	{
+		float income = 0f;
+		for (int i = 0; i < penguins.Count; i++)
+		{
+			income += penguins[i].getIncomePerSecond();
+		}
+		return income;
+	}
 }

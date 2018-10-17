@@ -16,6 +16,7 @@ namespace Classes
         private float cost;
         private int level;
         public bool hasManager;
+        private float multiplier = 1;
 
         public float getBaseCost()
         {
@@ -37,9 +38,14 @@ namespace Classes
             return FormulaManager.costFormula(baseCost, level, coefficient);
         }
 
-        public float getProduction(float multiplier)
+        public float getProduction()
         {
             return FormulaManager.productionFormula(baseProduction, level, multiplier);
+        }
+
+        public float getIncomePerSecond()
+        {
+            return (1 / getTimeToComplete()) * getProduction();
         }
 
         public float getTimeToComplete()

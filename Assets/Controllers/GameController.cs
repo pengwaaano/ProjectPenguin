@@ -15,10 +15,12 @@ public class GameController : MonoBehaviour
     public LocationController locationController;
     public CurrencyController currencyController;
     public PenguinController penguinController;
+    public FactoryController factoryController;
 
     void Update()
     {
-        fishText.text = "Fish: " + currencyController.getFishString(false);
+        fishText.text = CurrencyController.currencyName + ": " + currencyController.getCurrencyString(false);
+        fpsText.text = CurrencyController.currencyPerSecondName + ": " + factoryController.getOutputPerSecond();
     }
    
 }

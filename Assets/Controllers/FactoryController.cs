@@ -12,28 +12,29 @@ public class FactoryController : MonoBehaviour
 
     public float outputPerSecond;
     public float timeToProcess;
-    public float fish;
+    public float storage;
     public float level;
     public float baseCost;
     public float coefficient;
+    public float multiplier = 1;
 
     private CurrencyController cController;
 
     void Start()
     {
         cController = gameObject.GetComponent<CurrencyController>();
-        InvokeRepeating("processFish", 0, 1);
+        InvokeRepeating("process", 0, 1);
     }
 
     void Update()
     {
-        factoryCount.text = Util.CurrencyToString(fish);
+        factoryCount.text = Util.CurrencyToString(storage);
         factoryUpgradeText.text = "Upgrade (" + Util.CurrencyToString(getCost()) + ")";
     }
 
-    public void addFish(float _fish)
+    public void add(float _income)
     {
-        fish += _fish;
+        storage += _income;
     }
 
     public float getCost()
@@ -41,30 +42,31 @@ public class FactoryController : MonoBehaviour
         return FormulaManager.costFormula(baseCost, level, coefficient);
     }
 
-    private float getOutputPerSecond(float multiplier)
+    public float getOutputPerSecond()
     {
         return FormulaManager.productionFormula(outputPerSecond,level, multiplier);
     }
 
-    private void processFish()
+    private void process()
     {
-        float fishToProcess = fish > getOutputPerSecond(1) ? getOutputPerSecond(1) : fish;
+        float fishToProcess = storage > getOutputPerSecond() ? getOutputPerSecond() : storage;
         StartCoroutine(finishProcess(fishToProcess));
     }
 
     IEnumerator finishProcess(float f)
     {
         yield return new WaitForSeconds(timeToProcess);
-        cController.addFish(f);
-        fish -= f;
+        cController.add(f);
+        storage -= f;
     }
 
     public void upgradeFactory()
     {
         if (cController.canAfford(getCost()))
         {
-            cController.spendFish(getCost());
+            cController.spend(getCost());
             level += 1;
         }
     }
+   
 }

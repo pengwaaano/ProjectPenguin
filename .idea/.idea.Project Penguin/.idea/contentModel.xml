@@ -11,7 +11,9 @@
           <e p="CurrencyDenominations.cs" t="Include" />
           <e p="Fish.cs" t="Include" />
           <e p="Location.cs" t="Include" />
+          <e p="MoveFish.cs" t="Include" />
           <e p="Penguin.cs" t="Include" />
+          <e p="SpawnFish.cs" t="Include" />
           <e p="Upgrade.cs" t="Include" />
         </e>
         <e p="Constants" t="Include">
@@ -79,7 +81,9 @@
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="Project Penguin.sln" t="IncludeFlat" />
-      <e p="Temp/bin" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
     </e>
     <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_Project Penguin.-1120809760.00" t="ExcludeRecursive" />
   </component>

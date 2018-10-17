@@ -63,7 +63,7 @@ public class PenguinListItem : MonoBehaviour
         {
             if (cController.canAfford(penguin.getCost()))
             {
-                cController.spendFish(penguin.getCost());
+                cController.spend(penguin.getCost());
                 penguin.incrementLevel();
             }
         });
@@ -101,8 +101,8 @@ public class PenguinListItem : MonoBehaviour
 
     private void collectIncome()
     {
-        fController.addFish(penguin.getProduction(1));
-        penguin.getProduction(1);
+        fController.add(penguin.getProduction());
+        penguin.getProduction();
         penguinProgress.value = 0;
         progressComplete = false;
     }

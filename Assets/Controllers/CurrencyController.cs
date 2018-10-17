@@ -7,31 +7,34 @@ namespace Controllers
     {
         public List<CurrencyDenominations> denominations = new List<CurrencyDenominations>();
 
-        private float fish = 100;
+        public static string currencyName = "Plastic";
+        public static string currencyPerSecondName = "PPS";
+        
+        private float currency = 100;
 
         private void Start()
         {
             Util.denominations = denominations;
         }
 
-        public void addFish(float _fish)
+        public void add(float _income)
         {
-            fish += _fish;
+            currency += _income;
         }
 
-        public void spendFish(float _fish)
+        public void spend(float _cost)
         {
-            fish -= _fish;
+            currency -= _cost;
         }
 
         public bool canAfford(float _cost)
         {
-            return fish >= _cost;
+            return currency >= _cost;
         }
 
-        public string getFishString(bool scientific)
+        public string getCurrencyString(bool scientific)
         {
-            return scientific ? Util.CurrencyToStringScientific(fish) : Util.CurrencyToString(fish);
+            return scientific ? Util.CurrencyToStringScientific(currency) : Util.CurrencyToString(currency);
         }
     }
 }
